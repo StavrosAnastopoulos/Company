@@ -1,0 +1,44 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+a.navbar-brand {
+  margin-right: 0;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 5px 20px;
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  nav {
+    right: 0;
+    height: 40px;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    border-bottom: 1px solid #dee2e6;
+  }
+  app-desktop-nav {
+    display: none;
+  }
+
+  a.navbar-brand {
+    margin-left: 30px;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  nav {
+    bottom: 0;
+    width: 170px;
+    flex-flow: column nowrap;
+    border-right: 1px solid #dee2e6;
+  }
+
+  a.navbar-brand {
+    border-bottom: 1px solid #dee2e6;
+  }
+}

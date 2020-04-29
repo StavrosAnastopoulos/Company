@@ -1,0 +1,24 @@
+<script src="oidc-client.1.10.1.min.js"></script>
+<script>
+  new Oidc.UserManager({ response_mode: "query" })
+    .signinRedirectCallback()
+    .then(
+      () => {
+        window.history.replaceState(
+          {},
+          window.document.title,
+          window.location.origin
+        );
+        var returnUrl = window.localStorage.getItem("returnUrl");
+        if (returnUrl != null) {
+          window.localStorage.removeItem("returnUrl");
+          window.location.assign(`${window.location.origin}${returnUrl}`);
+        } else {
+          window.location = "/";
+        }
+      },
+      error => {
+        console.error(error);
+      }
+    );
+</script>

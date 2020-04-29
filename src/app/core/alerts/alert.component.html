@@ -1,0 +1,5 @@
+<p *ngFor="let alert of alerts$ | async; index as i">
+  <ngb-alert [type]="alert.type" (close)="close(i)">
+    {{ alert.message }}
+  </ngb-alert>
+</p>

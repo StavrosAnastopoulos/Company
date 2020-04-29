@@ -1,0 +1,23 @@
+.nav-item {
+  position: relative;
+  text-decoration: none;
+  padding-left: 10px;
+  &.link-active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    width: 2px;
+    background-color: #343a40;
+  }
+}
+
+.icon-container {
+  width: 25px;
+  display: flex;
+  fa-icon {
+    margin: auto;
+    font-size: 18px;
+  }
+}

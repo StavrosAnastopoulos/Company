@@ -1,0 +1,60 @@
+<li
+  *ngIf="menuItem.route"
+  class="nav-item"
+  [routerLinkActive]="['link-active']"
+  [routerLinkActiveOptions]="{ exact: true }"
+>
+  <a class="nav-link text-dark" [routerLink]="[menuItem.route]">
+    <ng-template
+      [ngTemplateOutlet]="item"
+      [ngTemplateOutletContext]="{ $implicit: menuItem }"
+    ></ng-template>
+  </a>
+</li>
+
+<li *ngIf="menuItem.href" class="nav-item">
+  <a class="nav-link text-dark" [attr.href]="menuItem.href">
+    <ng-template
+      [ngTemplateOutlet]="item"
+      [ngTemplateOutletContext]="{ $implicit: menuItem }"
+    ></ng-template>
+  </a>
+</li>
+
+<li
+  *ngIf="menuItem.value"
+  class="nav-item"
+  (click)="selectedItem.emit(menuItem.value)"
+>
+  <a class="nav-link text-dark">
+    <ng-template
+      [ngTemplateOutlet]="item"
+      [ngTemplateOutletContext]="{ $implicit: menuItem }"
+    ></ng-template>
+  </a>
+</li>
+
+<ngb-accordion *ngIf="menuItem.children">
+  <ngb-panel>
+    <ng-template ngbPanelTitle>
+      <a class="nav-link text-dark">{{ menuItem.name }}</a>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <app-menu-list>
+        <app-menu-item
+          *ngFor="let menuItem of children"
+          [menuItem]="menuItem"
+        ></app-menu-item>
+      </app-menu-list>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
+
+<ng-template #item let-data>
+  <div class="d-flex">
+    <div *ngIf="data.icon" class="icon-container">
+      <fa-icon [icon]="data.icon"></fa-icon>
+    </div>
+    <span> {{ data.name || data.value }} </span>
+  </div>
+</ng-template>

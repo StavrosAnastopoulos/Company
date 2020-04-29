@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header bg-white d-flex">
+    <h5>UsersList</h5>
+    <div class="d-block" style="margin-left: 10px;" (click)="requestData()">
+      <fa-icon
+        class="d-block"
+        [class.fa-spin]="isLoading$ | async"
+        [icon]="faSyncAlt"
+      ></fa-icon>
+    </div>
+    <div class="ml-auto">
+      <input
+        id="filterString"
+        name="filterString"
+        type="text"
+        class="form-control"
+        placeholder="Search Users"
+        [value]="filterString$ | async"
+        (change)="onChangeFilterString($event.target.value)"
+      />
+    </div>
+  </div>
+  <app-table
+    [source]="user$ | async"
+    [headers]="headers"
+    editable="true"
+    [extraActions]="tableActions"
+    (actionSelected)="onTableAction($event)"
+  ></app-table>
+  <div class="card-footer bg-white d-flex flex-wrap justify-content-between">
+    <ngb-pagination
+      [collectionSize]="collectionSize$ | async"
+      [page]="activePage$ | async"
+      (pageChange)="onChangePage($event)"
+      [pageSize]="itemsPerPage$ | async"
+      [maxSize]="5"
+      [rotate]="true"
+      [ellipses]="false"
+      [boundaryLinks]="true"
+    >
+    </ngb-pagination>
+
+    <div ngbDropdown placement="bottom-right">
+      <button
+        class="btn btn-outline-dark"
+        id="page-option-show-items"
+        ngbDropdownToggle
+      >
+        Show {{ itemsPerPage$ | async }} Users
+      </button>
+      <div ngbDropdownMenu aria-labelledby="page-option-show-items">
+        <button
+          *ngFor="let option of pageOptions"
+          class="dropdown-item"
+          (click)="onChangeNumberOfItems(option.value)"
+        >
+          {{ option.name }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

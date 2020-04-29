@@ -1,0 +1,44 @@
+<div class="table-responsive">
+  <table class="table table-hover col-12">
+    <thead>
+      <tr>
+        <th *ngFor="let column of headers" scope="col">{{ column.name }}</th>
+        <th *ngIf="editable" class="table-actions">
+          <fa-icon
+            class="cp"
+            [icon]="iconAdd.icon"
+            (click)="onActionSelection(iconAdd.name)"
+          ></fa-icon>
+        </th>
+        <th *ngIf="extraActions.length > 0" class="table-actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of source; index as i">
+        <td *ngFor="let column of headers" class="ellipsis">
+          {{ row[column.dataPointer] }}
+        </td>
+        <td *ngIf="editable" class="table-actions">
+          <fa-icon
+            class="cp"
+            [icon]="iconEdit.icon"
+            (click)="onActionSelection(iconEdit.name, row)"
+          ></fa-icon>
+          <fa-icon
+            class="cp"
+            [icon]="iconDelete.icon"
+            (click)="onActionSelection(iconDelete.name, row)"
+          ></fa-icon>
+        </td>
+        <td *ngIf="extraActions.length > 0" class="table-actions">
+          <fa-icon
+            *ngFor="let action of extraActions"
+            class="cp"
+            [icon]="action.icon"
+            (click)="onActionSelection(action.name, row)"
+          ></fa-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

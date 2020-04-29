@@ -1,0 +1,13 @@
+<ngb-accordion>
+  <ngb-panel cardClass="user-card">
+    <ng-template ngbPanelTitle>
+      <a class="text-dark ellipsis">{{ userName$ | async }}</a>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <ul class="navbar-nav">
+        <a class="nav-link text-dark cp" (click)="logout()">Logout</a>
+        <a class="nav-link text-dark cp" [routerLink]="['profile']">Profile</a>
+      </ul>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

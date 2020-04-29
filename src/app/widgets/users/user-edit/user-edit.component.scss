@@ -1,0 +1,19 @@
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  section {
+    header {
+      min-width: 100%;
+      border-bottom: 1px solid;
+      font-weight: 500;
+      font-size: large;
+      margin-bottom: 10px;
+    }
+    display: flex;
+    flex-flow: row wrap;
+  }
+}
+
+span.text-danger {
+  font-size: smaller;
+}

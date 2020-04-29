@@ -1,0 +1,294 @@
+<form [formGroup]="userForm" (ngSubmit)="save()" autocomplete="off">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ title }}</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="close(userForm.dirty)"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <section class="col-12">
+      <header>Profile</header>
+      <div class="form-group col-md-6">
+        <label
+          for="name"
+          [class.text-danger]="
+            name.invalid && (isEdit || name.dirty || name.touched)
+          "
+          >Name</label
+        >
+        <input
+          [class.is-invalid]="
+            name.invalid && (isEdit || name.dirty || name.touched)
+          "
+          id="name"
+          formControlName="name"
+          required
+          [pattern]="namePattern"
+          type="text"
+          class="form-control"
+        />
+        <div *ngIf="name.invalid && (isEdit || name.dirty || name.touched)">
+          <span class="text-danger" *ngIf="name.errors.required">
+            Name is required</span
+          >
+          <span class="text-danger" *ngIf="name.errors.pattern">
+            Name is invalid</span
+          >
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label
+          for="username"
+          [class.text-danger]="
+            username.invalid && (isEdit || username.dirty || username.touched)
+          "
+          >Username</label
+        >
+        <input
+          [class.is-invalid]="
+            username.invalid && (isEdit || username.dirty || username.touched)
+          "
+          id="username"
+          formControlName="username"
+          required
+          type="text"
+          class="form-control"
+        />
+        <div
+          *ngIf="
+            username.invalid && (isEdit || username.dirty || username.touched)
+          "
+        >
+          <span class="text-danger" *ngIf="username.errors.required">
+            Username is required</span
+          >
+        </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label
+          for="phone"
+          [class.text-danger]="
+            phone.invalid && (isEdit || phone.dirty || phone.touched)
+          "
+          >Telephone</label
+        >
+        <input
+          [class.is-invalid]="
+            phone.invalid && (isEdit || phone.dirty || phone.touched)
+          "
+          id="phone"
+          formControlName="phone"
+          required
+          type="text"
+          class="form-control"
+        />
+        <div *ngIf="phone.invalid && (isEdit || phone.dirty || phone.touched)">
+          <span class="text-danger" *ngIf="phone.errors.required">
+            Telephone is required</span
+          >
+        </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label
+          for="email"
+          [class.text-danger]="
+            email.invalid && (isEdit || email.dirty || email.touched)
+          "
+          >Email</label
+        >
+        <input
+          [class.is-invalid]="
+            email.invalid && (isEdit || email.dirty || email.touched)
+          "
+          id="email"
+          formControlName="email"
+          required
+          type="email"
+          class="form-control"
+        />
+        <div *ngIf="email.invalid && (isEdit || email.dirty || email.touched)">
+          <span class="text-danger" *ngIf="email.errors.required">
+            Email is required</span
+          >
+          <span class="text-danger" *ngIf="email.errors.email">
+            Email is not valid</span
+          >
+        </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="website">Website</label>
+        <input
+          id="website"
+          formControlName="website"
+          type="website"
+          class="form-control"
+        />
+      </div>
+    </section>
+    <section class="col-12" formGroupName="address">
+      <header>Address</header>
+      <div class="form-group col-md-6">
+        <label
+          for="street"
+          [class.text-danger]="
+            street.invalid && (isEdit || street.dirty || street.touched)
+          "
+          >Street</label
+        >
+        <input
+          [class.is-invalid]="
+            street.invalid && (isEdit || street.dirty || street.touched)
+          "
+          id="street"
+          formControlName="street"
+          required
+          type="text"
+          class="form-control"
+        />
+        <div
+          *ngIf="street.invalid && (isEdit || street.dirty || street.touched)"
+        >
+          <span class="text-danger" *ngIf="street.errors.required">
+            Street is required</span
+          >
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label
+          for="suite"
+          [class.text-danger]="
+            suite.invalid && (isEdit || suite.dirty || suite.touched)
+          "
+          >Suite</label
+        >
+        <input
+          [class.is-invalid]="
+            suite.invalid && (isEdit || suite.dirty || suite.touched)
+          "
+          id="suite"
+          formControlName="suite"
+          required
+          type="text"
+          class="form-control"
+        />
+        <div *ngIf="suite.invalid && (isEdit || suite.dirty || suite.touched)">
+          <span class="text-danger" *ngIf="suite.errors.required">
+            Suite is required</span
+          >
+        </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label
+          for="zipcode"
+          [class.text-danger]="
+            zipcode.invalid && (isEdit || zipcode.dirty || zipcode.touched)
+          "
+          >Zipcode</label
+        >
+        <input
+          [class.is-invalid]="
+            zipcode.invalid && (isEdit || zipcode.dirty || zipcode.touched)
+          "
+          id="zipcode"
+          formControlName="zipcode"
+          required
+          type="text"
+          class="form-control"
+        />
+        <div
+          *ngIf="
+            zipcode.invalid && (isEdit || zipcode.dirty || zipcode.touched)
+          "
+        >
+          <span class="text-danger" *ngIf="zipcode.errors.required">
+            Zipcode is required</span
+          >
+        </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label
+          for="city"
+          [class.text-danger]="
+            city.invalid && (isEdit || city.dirty || city.touched)
+          "
+          >City</label
+        >
+        <input
+          [class.is-invalid]="
+            city.invalid && (isEdit || city.dirty || city.touched)
+          "
+          id="city"
+          formControlName="city"
+          required
+          type="text"
+          class="form-control"
+        />
+        <div *ngIf="city.invalid && (isEdit || city.dirty || city.touched)">
+          <span class="text-danger" *ngIf="city.errors.required">
+            City is required</span
+          >
+        </div>
+      </div>
+    </section>
+    <section class="col-12" formGroupName="company">
+      <header>Company</header>
+      <div class="form-group col-md-12">
+        <label
+          for="companyName"
+          [class.text-danger]="
+            companyName.invalid &&
+            (isEdit || companyName.dirty || companyName.touched)
+          "
+          >Name</label
+        >
+        <input
+          [class.is-invalid]="
+            companyName.invalid &&
+            (isEdit || companyName.dirty || companyName.touched)
+          "
+          id="companyName"
+          formControlName="name"
+          required
+          type="text"
+          class="form-control"
+        />
+        <div
+          *ngIf="
+            companyName.invalid &&
+            (isEdit || companyName.dirty || companyName.touched)
+          "
+        >
+          <span class="text-danger" *ngIf="companyName.errors.required">
+            Company Name is required</span
+          >
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="modal-footer">
+    <button
+      [disabled]="!userForm.valid"
+      type="submit"
+      class="btn btn-outline-primary"
+    >
+      {{ isEdit ? "Save" : "Create" }}
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-danger"
+      (click)="close(userForm.dirty)"
+    >
+      Cancel
+    </button>
+  </div>
+</form>

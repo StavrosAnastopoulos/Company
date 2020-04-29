@@ -1,0 +1,17 @@
+:host {
+  max-width: 100%;
+  overflow: scroll;
+}
+
+fa-icon {
+  display: block;
+  color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  &.fa-spin,
+  &:hover {
+    color: #212529;
+  }
+  &.fa-spin {
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,8 @@
+<script src="oidc-client.1.10.1.min.js"></script>
+<script>
+  new Oidc.UserManager({ response_mode: "query" })
+    .signinSilentCallback()
+    .catch(error => {
+      console.error(error);
+    });
+</script>
